@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HelloWorldControler {
 
-	@RequestMapping(method = RequestMethod.GET, value = "/helloworld")
+	@RequestMapping(method = RequestMethod.GET, value = "/helloworld1")
 	public String findFlightForm() {
 		return "index";
 	}
