@@ -12,7 +12,9 @@ pipeline{
 		       }
 		}
 	     stage('Deploy in Tomcat'){
-		     build job:'Helloworld_deploy_test'
+		     steps{
+		        build job:'Helloworld_deploy_test'
+		     }
 	     }   
    }
 }
