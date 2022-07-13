@@ -5,9 +5,11 @@ pipeline{
 		     steps{
 		        bat 'mvn clean package'
 		      }
-			     success{
-			        archiveArtifacts artifacts: '**/*.war'
-			       }
+			    post{
+			      success{
+			         archiveArtifacts artifacts: '**/*.war'
+			        }
+			      }
 		    }
 	    }
 }
