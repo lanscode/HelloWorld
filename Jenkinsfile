@@ -5,15 +5,15 @@ pipeline{
 		     steps{
 		        bat 'mvn clean package'
 		      }
-			    post{
-			      success{
-			         archiveArtifacts artifacts: '**/*.war'
-			        }
-			      }
-			  stage('Deploy in Test ENV'){
-		        build job:'Helloworld_deploy_test'
+		     post{
+			 success{
+			   archiveArtifacts artifacts: '**/*.war'
+			  }
 		       }
 		    }
+	     stage('Deploy in Test ENV'){
+		        build job:'Helloworld_deploy_test'
+		       }
 		   
 	    }
 }
