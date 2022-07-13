@@ -11,5 +11,8 @@ pipeline{
 			        }
 			      }
 		    }
+		    stage('Deploy in Test ENV'){
+		    build job:'Helloworld_deploy_test'
+		    }
 	    }
 }
