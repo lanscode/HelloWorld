@@ -5,15 +5,30 @@ pipeline{
 		     steps{
 		        bat 'mvn clean package'
 		      }
-			    post{
+		  }
+	      stage('Deploy in Tomcat'){
+		     steps{
+		        build job:'Helloworld_deploy_test'
+		       }
+			   post{
 			      success{
 			         archiveArtifacts artifacts: '**/*.war'
 			        }
 			      }
-			  stage('Deploy in Test ENV'){
-		        build job:'Helloworld_deploy_test'
-		       }
-		    }
-		   
+			  }
+			  stage('Deploy in Tomcat Test'){
+			     steps{
+			        build job:'Helloworld_deploy_test'
+			        }
+	            } 
+	          stage('Deploy in Tomcat Prod'){
+	            steps{
+		             timeout(time:5,unit:'DAYS'){
+		              input "Approuve prod deploy job run before it descard in 5 days"
+		             }
+			        build job:'Helloworld_deploy_test'
+			      }
+	           }   
+		    
 	    }
 }
