@@ -18,14 +18,10 @@ pipeline{
 	          } 
 	          stage('Deploy in Tomcat Prod'){
 	          steps{
-	              step('Test deploy'){
 		             timeout(time:5,unit:'DAYS'){
 		              input message "Approuve prod deploy job run before it descard in 5 days"
-		              }
 		            }
-                  step('Prod deploy'){
 			        build job:'Helloworld_deploy_test'
-                   }
 			     }
 	          }   
 		    
