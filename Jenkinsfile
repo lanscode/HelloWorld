@@ -10,6 +10,7 @@ pipeline{
 			         archiveArtifacts artifacts: '**/*.war'
 			        }
 			      }
+			  }
 			  stage('Deploy in Tomcat'){
 			     steps{
 			        build job:'Helloworld_deploy_test'
@@ -23,7 +24,7 @@ pipeline{
 			        build job:'Helloworld_deploy_test'
 			        }
 	          }   
-		    }
+		    
 		   
 	    }
 }
