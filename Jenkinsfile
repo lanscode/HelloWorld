@@ -15,15 +15,15 @@ pipeline{
 			     steps{
 			        build job:'Helloworld_deploy_test'
 			        }
-	          } 
+	            } 
 	          stage('Deploy in Tomcat Prod'){
-	          steps{
+	            steps{
 		             timeout(time:5,unit:'DAYS'){
-		              input message "Approuve prod deploy job run before it descard in 5 days"
-		            }
+		              input "Approuve prod deploy job run before it descard in 5 days"
+		             }
 			        build job:'Helloworld_deploy_test'
-			     }
-	          }   
+			      }
+	           }   
 		    
 		   
 	    }
