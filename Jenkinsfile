@@ -1,34 +1,22 @@
 pipeline{
      agent any
      stages{
-	     stage('Build Application'){
+	    stage('Build Application'){
 		     steps{
 		        bat 'mvn clean package'
 		      }
-		  }
-	      stage('Deploy in Tomcat'){
-		     steps{
-		        build job:'Helloworld_deploy_test'
-		       }
 			   post{
 			      success{
 			         archiveArtifacts artifacts: '**/*.war'
 			        }
 			      }
-			  }
-			  stage('Deploy in Tomcat Test'){
+		    }
+			stage('Deploy in Docker'){
 			     steps{
-			        build job:'Helloworld_deploy_test'
+			        bat'docker build -f Dockerfile -t myhelloworld:1.0 .'
 			        }
-	            } 
-	          stage('Deploy in Tomcat Prod'){
-	            steps{
-		             timeout(time:5,unit:'DAYS'){
-		              input "Approuve prod deploy job run before it descard in 5 days"
-		             }
-			        build job:'Helloworld_deploy_test'
-			      }
-	           }   
-		    
+	          } 
+	         
 	    }
+
 }
