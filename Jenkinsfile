@@ -11,11 +11,11 @@ pipeline{
 			        }
 			      }
 		    }
-			stage('Deploy in Docker'){
-			     steps{
-			        bat'docker build -f Dockerfile -t myhelloworld:1.0 .'
-			        }
-	          } 
+		stage('Deploy in Docker'){
+			 steps{
+			     bat'docker build -f Dockerfile -t myhelloworld:${env.BUILD_ID}.'
+			    }
+	        } 
 	         
 	    }
 
