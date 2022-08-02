@@ -5,4 +5,4 @@ ADD **/*.war /usr/local/tomcat/webapps
 
 EXPOSE 8180
  # OPEN THIS PORT on the machine where docker is running
-CMD ["catalina.bat","run"]
+CMD ["catalina.sh","run"]
