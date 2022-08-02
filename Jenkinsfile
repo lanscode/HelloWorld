@@ -13,7 +13,7 @@ pipeline{
 		    }
 		stage('Deploy in Docker'){
 			 steps{
-			     bat'docker build -f Dockerfile -t myhelloworld:${env.BUILD_ID}.'
+			     bat'docker build -f Dockerfile -t myhelloworld:%BUILD_ID% .'
 			    }
 	        } 
 	         
