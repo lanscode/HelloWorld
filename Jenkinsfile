@@ -1,7 +1,7 @@
 pipeline{
      agent any
      stages{
-	     stage('Build Application'){
+	    stage('Build Application'){
 		     steps{
 		        bat 'mvn clean package'
 		      }
@@ -18,4 +18,5 @@ pipeline{
 	          } 
 	         
 	    }
+
 }
